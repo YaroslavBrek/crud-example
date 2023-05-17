@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    build: ./dump
+    restart: 'always'
+    container_name: "database"
+    expose:
+      - '3306'
+    ports:
+      - '3306:3306'
+    environment:
+       MYSQL_ROOT_PASSWORD: 'root'
+       MYSQL_DATABASE: 'db'
+       MYSQL_PASSWORD: 'pass'
+       MYSQL_ROOT_HOST: '%'
+  application:
+    build: .
+    depends_on:
+      - "database"
+    container_name: app
+    ports:
+      - "8181:8080"

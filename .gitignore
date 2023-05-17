@@ -1,6 +1,4 @@
 /target
-docker-compose.yml
-Dockerfile
 .idea
 .vscode
 /dump/Dockerfile
